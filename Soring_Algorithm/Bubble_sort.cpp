@@ -1,35 +1,37 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-// bubble sort can sort the largerst element after every itaration
+void print(int row,int col,int arr[])
+{
+    if(row==0)
+    {
+        return;
+    }
+    if(col<row)
+    {
+        if(arr[col]>arr[col+1])
+        {
+            swap(arr[col],arr[col+1]);
+        }
+        print(row,col+1,arr);
+    }
+    else
+    {
+        print(row-1,0,arr);
+    }
+}
 int main()
 {
     int n;
-    cin >> n;
-    int arr[n + 4];
-    for (int i = 0; i < n; i++)
+    cin>>n;
+    int arr[n+4];
+    for(int i=0;i<n;i++)
     {
-        cin >> arr[i];
+        cin>>arr[i];
     }
-    
-    for(int i=0;i<n-1;i++)
+    print(n-1,0,arr);
+    for(int i=0;i<n;i++)
     {
-        bool flag = true;// if array is already sorted or not
-        for(int j=0;j<n-i-1;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-                swap(arr[j],arr[j+1]);
-                flag = false;
-            }
-        }
-        if(flag==true)
-        {
-            break;
-        }
+        cout<<arr[i]<< " ";
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    cout<<endl;
 }
