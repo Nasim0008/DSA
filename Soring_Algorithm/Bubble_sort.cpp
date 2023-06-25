@@ -1,24 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-void print(int row,int col,int arr[])
-{
-    if(row==0)
-    {
-        return;
-    }
-    if(col<row)
-    {
-        if(arr[col]>arr[col+1])
-        {
-            swap(arr[col],arr[col+1]);
-        }
-        print(row,col+1,arr);
-    }
-    else
-    {
-        print(row-1,0,arr);
-    }
-}
 int main()
 {
     int n;
@@ -28,7 +9,17 @@ int main()
     {
         cin>>arr[i];
     }
-    print(n-1,0,arr);
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+
     for(int i=0;i<n;i++)
     {
         cout<<arr[i]<< " ";
